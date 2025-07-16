@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'ava-machine'
+    }
     
     environment {
         // Docker Hub credentials ID (configured in Jenkins credentials)
