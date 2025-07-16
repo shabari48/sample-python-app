@@ -144,11 +144,11 @@ pipeline {
             🔗 View on Docker Hub: https://hub.docker.com/r/shabarisv48/jenkins-sample
             """
 
-            emailext(
-                to: "shabariprakashsv@gmail.com",
-                subject: "Build Success",
-                body: "The build was successful!"
-            )
+            // emailext(
+            //     to: "shabariprakashsv@gmail.com",
+            //     subject: "Build Success",
+            //     body: "The build was successful!"
+            // )
 
         }
 
@@ -164,17 +164,17 @@ pipeline {
             - Invalid Docker Hub repository name
             """
 
-            emailext(
-                to: "shabariprakashsv@gmail.com",
-                subject: "Build Failed",
-                body: "The build was failure!"
-            )
+            // emailext(
+            //     to: "shabariprakashsv@gmail.com",
+            //     subject: "Build Failed",
+            //     body: "The build was failure!"
+            // )
 
         }
-        always {
-            // Clean workspace
-            cleanWs()
-            echo "🧹 Workspace cleaned"
-        }
+        // always {
+        //     // Clean workspace
+        //     cleanWs()
+        //     echo "🧹 Workspace cleaned"
+        // }
     }
 }
