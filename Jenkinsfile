@@ -4,13 +4,9 @@ pipeline {
     }
     
     environment {
-        // Docker Hub credentials ID (configured in Jenkins credentials)
         DOCKER_HUB_CREDENTIALS = 'docker-hub-credentials'
-        // Docker Hub repository name
         DOCKER_HUB_REPO = 'shabarisv48/jenkins-sample'
-        // Image tag (you can use build number or git commit)
         IMAGE_TAG = "${BUILD_NUMBER}"
-        // GitHub repository URL
         GIT_REPO = 'https://github.com/shabari48/sample-python-app'
     }
     
@@ -24,7 +20,7 @@ pipeline {
                         git "${GIT_REPO}"
                         echo "✅ Repository cloned successfully"
                         
-                        // Show some info about the repo
+                    
                         sh 'ls -la'
                         sh 'git log --oneline -5'
                         
@@ -144,12 +140,6 @@ pipeline {
             🔗 View on Docker Hub: https://hub.docker.com/r/shabarisv48/jenkins-sample
             """
 
-            // emailext(
-            //     to: "shabariprakashsv@gmail.com",
-            //     subject: "Build Success",
-            //     body: "The build was successful!"
-            // )
-
         }
 
         failure {
@@ -164,17 +154,12 @@ pipeline {
             - Invalid Docker Hub repository name
             """
 
-            // emailext(
-            //     to: "shabariprakashsv@gmail.com",
-            //     subject: "Build Failed",
-            //     body: "The build was failure!"
-            // )
 
         }
-        // always {
-        //     // Clean workspace
-        //     cleanWs()
-        //     echo "🧹 Workspace cleaned"
-        // }
+        always {
+            // Clean workspace
+            cleanWs()
+            echo "🧹 Workspace cleaned"
+        }
     }
 }
